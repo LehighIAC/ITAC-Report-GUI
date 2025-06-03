@@ -4,23 +4,23 @@
         "comment": "Fuel Type, string"
     },
     "FuelUnit": {
-        "value": "Mcf",
+        "value": "Therm",
         "comment": "Fuel Unit, string"
     },
     "FC": {
-        "value": 3.28,
+        "value": 3.34,
         "comment": "Fuel Cost, $/MMBtu, float"
     },
     "NGC": {
-        "value": 3.28,
+        "value": 3.34,
         "comment": "Natural Gas Cost(for compatibility), $/MMBtu, float"
     },
     "EC": {
-        "value": 0.068,
+        "value": 0.118,
         "comment": "Electricity Cost, $/kWh, float"
     },
     "DC": {
-        "value": 1.67,
+        "value": 6.25,
         "comment": "Demand Cost, $/kW, float"
     },
     "LR": {
@@ -28,43 +28,43 @@
         "comment": "Labor Rate, $/hr, integer"
     },
     "StartMo": {
-        "value": "Oct 23",
+        "value": "Jan 24",
         "comment": "Start month, string"
     },
     "EndMo": {
-        "value": "Sep 24",
+        "value": "Dec 24",
         "comment": "End month, string"
     },
     "TotalEkWh": {
-        "value": 66243000,
+        "value": 12362093,
         "comment": "Total Electricity, kWh, integer"
     },
     "TotalEBtu": {
-        "value": 684912,
+        "value": 127817,
         "comment": "Total Electricity, MMBtu, integer"
     },
     "TotalDkW": {
-        "value": 133748,
+        "value": 23756,
         "comment": "Total Demand, kW, integer"
     },
     "TotalECost": {
-        "value": 6058177,
+        "value": 1619966,
         "comment": "Total Electricity Cost, integer"
     },
     "TotalFBtu": {
-        "value": 201786,
+        "value": 202404,
         "comment": "Total Fuel, MMBtu, integer"
     },
     "TotalFCost": {
-        "value": 661623,
+        "value": 675218,
         "comment": "Total Fuel Cost, integer"
     },
     "TotalBtu": {
-        "value": 886699,
+        "value": 330221,
         "comment": "Total Energy, MMBtu, integer"
     },
     "TotalCost": {
-        "value": 6719800,
+        "value": 2295184,
         "comment": "Total Energy Cost, integer"
     }
 }
