@@ -17,8 +17,8 @@ def Utility(filepath:str):
     utility.EC.value = round(ws['D21'].value,3)
     # Get Demand cost from cell D23, 2 digits
     utility.DC.value = round(ws['D23'].value,2)
-    # Get Fees from cell G19, 2 digits
-    Fees = round(ws['G19'].value,2)
+    # Get Fees from cell G19
+    utility.TotalOFees.value = round(ws['G19'].value)
     # Get Fuel cost from cell D24, 2 digits
     utility.FC.value = round(ws['D24'].value,2)
     # Get Fuel type from cell Q2, string
@@ -31,23 +31,31 @@ def Utility(filepath:str):
     utility.EndMo.value = ws['B18'].value
     # Get Total Electricity kWh from cell C19
     utility.TotalEkWh.value = round(ws['C19'].value)
+    # Get Total Electricity Usage Cost from cell D19
+    utility.TotalECost.value = round(ws['D19'].value)
     # Get Total Electricity MMBtu from cell I19
     utility.TotalEBtu.value = round(ws['I19'].value)
     # Get Total Demand kW from cell E19
     utility.TotalDkW.value = round(ws['E19'].value)
+    # Get Total Demand Cost from cell F19
+    utility.TotalDCost.value = round(ws['F19'].value)
+    # Get Total Fuel w/ Unit Type from cell L19
+    utility.TotalFuelBC.value = round(ws['L19'].value)
     # Get Total Fuel MMBtu from cell M19
     utility.TotalFBtu.value = round(ws['M19'].value)
 
     # Get Total Energy worksheet
     ws = wb['Total Energy']
-    # Get Total Electricity cost from cell E5+E6 plus other fees
-    utility.TotalECost.value = round(ws['E5'].value)+ round(ws['E6'].value)+ round(Fees)
     # Get Total Fuel cost from cell E7
     utility.TotalFCost.value = round(ws['E7'].value)
     # Get Total Energy MMBtu from cell D8
     utility.TotalBtu.value = round(ws['D8'].value)
     # Get Total Energy Cost from cell E8
     utility.TotalCost.value = utility.TotalECost.value + utility.TotalFCost.value
+    # Get Incremental ELectricity Cost
+    utility.IncECost.value = round(utility.TotalECost.value / utility.TotalEkWh.value, 3)
+    # Get Incremental Fuel Cost
+    utility.IncFCost.value = round(utility.TotalFCost.value / utility.TotalFBtu.value, 3)
 
     # Write Natural Gas Cost for compatibility.
     if utility.FuelType.value == "Natural Gas":
