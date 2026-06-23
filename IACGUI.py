@@ -1,5 +1,5 @@
 #! /usr/bin/env python3
-import sys, os.path, json
+import sys, os.path, json, platform
 import tkinter as tk
 from tkinter import scrolledtext, filedialog
 from tkcalendar import DateEntry
@@ -107,7 +107,7 @@ class Application(tk.Frame):
         
         self.Dateinfo02 = DateEntry(self.Labelframe1, textvariable=self.VDATE, date_pattern='mm/dd/yyyy')
         self.Dateinfo02.set_date(self.info.VDATE.value)
-        self.Dateinfo02.grid(row=2, column=1)
+        self.Dateinfo02.grid(row=2, column=1, sticky ='w')
 
         self.Entryinfo03 = tk.Entry(self.Labelframe1, textvariable=self.LOC)
         self.Entryinfo03.grid(row=3, column=1, sticky='w')
@@ -168,28 +168,34 @@ class Application(tk.Frame):
         
         Professors = ["Dr. Alparslan Oztekin", "Dr. Sudhakar Neti", "Dr. Ebru Demir"]
         self.Optioninfo14 = tk.OptionMenu(self.Labelframe1, self.PROF, *Professors)
-        self.Optioninfo14.grid(row=14, column=1)
 
-        Students= ["Tong Su", "Orhan Kaya", "Guanyang Xue", "Muhannad Altimemy", "Direnc Akyildiz", "Amin Balazadeh", "Evan Dare"]
+        Students= ["Tong Su", "Muhannad Altimemy", "Amin Balazadeh", "Gregory Scott", "Ben Ratner", "Bingxu Zhao", "Setayesh Javadirad", "Alex Rios"]
         self.Optioninfo15 = tk.OptionMenu(self.Labelframe1, self.LEAD, *Students)
-        self.Optioninfo15.grid(row=15, column=1)
 
         self.Optioninfo16 = tk.OptionMenu(self.Labelframe1, self.SAFE, *Students)
-        self.Optioninfo16.grid(row=16, column=1)
+
+        if platform.system() == 'Darwin': #MacOS
+          self.Optioninfo14.grid(row=14, column=1)
+          self.Optioninfo15.grid(row=15, column=1)
+          self.Optioninfo16.grid(row=16, column=1)
+        else: # Windows/Linux
+          self.Optioninfo14.grid(row=14, column=1, sticky='w')
+          self.Optioninfo15.grid(row=15, column=1, sticky='w')
+          self.Optioninfo16.grid(row=16, column=1, sticky='w')
 
         self.Frameinfo17 = tk.Frame(self.Labelframe1)
         self.Frameinfo17.grid(row=17, column=1, sticky='w')
         self.Entryinfo17 = tk.Label(self.Frameinfo17, textvariable=self.NumPART)
-        self.Entryinfo17.grid(row=0, column=0)
+        self.Entryinfo17.grid(row=0, column=0, sticky='w')
         self.Buttoninfo17 = tk.Button(self.Frameinfo17, text="Edit", command=lambda: self.EditPeople("PART"))
-        self.Buttoninfo17.grid(row=0, column=1)
+        self.Buttoninfo17.grid(row=0, column=1, sticky='w')
 
         self.Frameinfo18 = tk.Frame(self.Labelframe1)
         self.Frameinfo18.grid(row=18, column=1, sticky='w')
         self.Entryinfo18 = tk.Label(self.Frameinfo18, textvariable=self.NumCONT)
-        self.Entryinfo18.grid(row=0, column=0)
+        self.Entryinfo18.grid(row=0, column=0, sticky='w')
         self.Buttoninfo18 = tk.Button(self.Frameinfo18, text="Edit", command=lambda: self.EditPeople("CONT"))
-        self.Buttoninfo18.grid(row=0, column=1)
+        self.Buttoninfo18.grid(row=0, column=1, sticky='w')
 
         # set grid row and column weight
         for rows in range(self.Labelframe1.grid_size()[1]):
@@ -197,42 +203,68 @@ class Application(tk.Frame):
             # set label padx
             if rows > 0:                
                 self.Labelframe1.grid_slaves(row=rows, column=0)[0].config(padx=10)
-        self.Labelframe1.rowconfigure(0, minsize=5)
-        self.Labelframe1.columnconfigure(0, minsize=120)
-        self.Labelframe1.columnconfigure(1, minsize=180)
-        self.Dateinfo02.config(width=18)
-        self.Entryinfo12a.config(width=4)
-        self.Labelinfo12a.config(width=2)
-        self.Entryinfo12b.config(width=2)
-        self.Labelinfo12b.config(width=2)
-        self.Entryinfo12c.config(width=2)
-        self.Labelinfo12c.config(width=2)
-        self.Entryinfo13a.config(width=4)
-        self.Labelinfo13a.config(width=2)
-        self.Entryinfo13b.config(width=2)
-        self.Labelinfo13b.config(width=2)
-        self.Entryinfo13c.config(width=2)
-        self.Labelinfo13c.config(width=2)
-        self.Optioninfo14.config(width=16)
-        self.Optioninfo15.config(width=16)
-        self.Optioninfo16.config(width=16)
-        self.Frameinfo17.columnconfigure(0, minsize=90)
-        self.Frameinfo17.columnconfigure(1, minsize=90)
-        self.Frameinfo18.columnconfigure(0, minsize=90)
-        self.Frameinfo18.columnconfigure(1, minsize=90)
-        self.Buttoninfo17.config(width=6)
-        self.Buttoninfo18.config(width=6)
-            
+        if platform.system() == 'Darwin':       # macOS
+          self.Labelframe1.rowconfigure(0, minsize=5)
+          self.Labelframe1.columnconfigure(0, minsize=120)
+          self.Labelframe1.columnconfigure(1, minsize=180)
+          self.Dateinfo02.config(width=18)
+          self.Entryinfo12a.config(width=4)
+          self.Labelinfo12a.config(width=2)
+          self.Entryinfo12b.config(width=2)
+          self.Labelinfo12b.config(width=2)
+          self.Entryinfo12c.config(width=2)
+          self.Labelinfo12c.config(width=2)
+          self.Entryinfo13a.config(width=4)
+          self.Labelinfo13a.config(width=2)
+          self.Entryinfo13b.config(width=2)
+          self.Labelinfo13b.config(width=2)
+          self.Entryinfo13c.config(width=2)
+          self.Labelinfo13c.config(width=2)
+          self.Optioninfo14.config(width=16)
+          self.Optioninfo15.config(width=16)
+          self.Optioninfo16.config(width=16)
+          self.Frameinfo17.columnconfigure(0, minsize=90)
+          self.Frameinfo17.columnconfigure(1, minsize=90)
+          self.Frameinfo18.columnconfigure(0, minsize=90)
+          self.Frameinfo18.columnconfigure(1, minsize=90)
+          self.Buttoninfo17.config(width=6)
+          self.Buttoninfo18.config(width=6)
+        else: # Windows/Linux
+          self.Labelframe1.rowconfigure(0, minsize=5)
+          self.Labelframe1.columnconfigure(0, minsize=120)
+          self.Labelframe1.columnconfigure(1, minsize=180)
+          self.Dateinfo02.config(width=17)
+          self.Entryinfo12a.config(width=2)
+          self.Labelinfo12a.config(width=3)
+          self.Entryinfo12b.config(width=1)
+          self.Labelinfo12b.config(width=3)
+          self.Entryinfo12c.config(width=2)
+          self.Labelinfo12c.config(width=3)
+          self.Entryinfo13a.config(width=2)
+          self.Labelinfo13a.config(width=3)
+          self.Entryinfo13b.config(width=1)
+          self.Labelinfo13b.config(width=3)
+          self.Entryinfo13c.config(width=2)
+          self.Labelinfo13c.config(width=3)
+          self.Optioninfo14.config(width=16, padx=10)
+          self.Optioninfo15.config(width=16, padx=10)
+          self.Optioninfo16.config(width=16, padx=10)
+          self.Frameinfo17.columnconfigure(0, minsize=90)
+          self.Frameinfo17.columnconfigure(1, minsize=90)
+          self.Frameinfo18.columnconfigure(0, minsize=90)
+          self.Frameinfo18.columnconfigure(1, minsize=90)
+          self.Buttoninfo17.config(width=6)
+          self.Buttoninfo18.config(width=6)                
         self.Labelframe2 = tk.LabelFrame(self.parent, text="Workflow")
         self.Labelframe2.place(x=380, y=10, height=570, width=210)
 
-        self.Label1 = tk.Label(self.Labelframe2, text="1. Analyze EnergyChart.xlsx",justify='left')
+        self.Label1 = tk.Label(self.Labelframe2, text="1. Analyze EnergyCharts.xlsx",justify='left')
         self.Label1.grid(row=0, column=0, sticky='w')
 
         self.Button1 = tk.Button(self.Labelframe2, text="Locate File", command = self.LoadEnergyChart)
         self.Button1.grid(row=1, column=0)
 
-        self.Label2 = tk.Label(self.Labelframe2, text="2. Open EnergyChart.xlsx and save as Web Page (.htm)",justify='left')
+        self.Label2 = tk.Label(self.Labelframe2, text="2. Open EnergyCharts.xlsx and save as Web Page (.htm)",justify='left')
         self.Label2.grid(row=3, column=0, sticky='w')
 
         self.Button2 = tk.Button(self.Labelframe2, text="Open in Excel", command = self.OpenEnergyChart)

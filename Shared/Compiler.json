@@ -1,51 +1,51 @@
 {
     "LE": {
-        "value": "LE0561",
+        "value": "LE0601",
         "comment": "Visit number, string"
     },
     "VDATE": {
-        "value": "05/27/2024",
+        "value": "03/28/2025",
         "comment": "For two day visits, use the second date."
     },
     "LOC": {
-        "value": "Bethlehem, PA 18015",
+        "value": "Bridgewater, NJ",
         "comment": "City, State ZIP, string"
     },
     "SIC": {
-        "value": "1234",
+        "value": "2013",
         "comment": "Look up from https://www.osha.gov/data/sic-manual"
     },
     "NAICS": {
-        "value": "123456",
+        "value": "311612",
         "comment": "Look up from https://www.census.gov/naics/"
     },
     "SALE": {
-        "value": 1000000,
+        "value": 120000000,
         "comment": "Annual sales, $, interger"
     },
     "EMPL": {
-        "value": 100,
+        "value": 127,
         "comment": "Number of employees, integer"
     },
     "AREA": {
-        "value": 100000,
+        "value": 132142,
         "comment": "Area, sqft, integer"
     },
     "PROD": {
-        "value": "student",
+        "value": "Collagen Casing",
         "comment": "Principal roduct, string"
     },
     "ANPR": {
-        "value": 1000,
+        "value": 592021000,
         "comment": "Annual production, units"
     },
     "PRUN": {
-        "value": "units",
+        "value": "meters of collagen casing",
         "comment": "Production unit, string"
     },
     "PROH": {
         "value": [
-            10.5,
+            12,
             7,
             52
         ],
@@ -53,7 +53,7 @@
     },
     "OFOH": {
         "value": [
-            7.5,
+            9,
             5,
             52
         ],
@@ -64,26 +64,29 @@
         "comment": "Professor, string"
     },
     "LEAD": {
-        "value": "Tong Su",
+        "value": "Setayesh Javadirad",
         "comment": "Lead Student, string"
     },
     "SAFE": {
-        "value": "Orhan Kaya",
+        "value": "Muhannad Altimemy",
         "comment": "Safety Student, string"
     },
     "PART": {
         "value": [
-            "Tong Su",
-            "Orhan Kaya"
+            "Benedict Amuzu",
+            "Daisy Freeman",
+            "Frank Sabbih",
+            "Ali Seyedmirzaei Sarraf",
+            "Ziqian Teng"
         ],
         "comment": "Visit Participants, list of strings"
     },
     "CONT": {
         "value": [
-            "Tong Su",
-            "Orhan Kaya",
-            "Guanyang Xue",
-            "Muhannad Altimemy"
+            "Muhannad Altimemy",
+            "Setayesh Javadirad",
+            "Alex Rios",
+            "Bingxu Zhao"
         ],
         "comment": "Report Contributors, list of strings"
     }
