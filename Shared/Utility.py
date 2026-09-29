@@ -51,7 +51,7 @@ def Utility(filepath:str):
     # Get Total Energy MMBtu from cell D8
     utility.TotalBtu.value = round(ws['D8'].value)
     # Get Total Energy Cost from cell E8
-    utility.TotalCost.value = utility.TotalECost.value + utility.TotalFCost.value
+    utility.TotalCost.value = utility.TotalECost.value + utility.TotalDCost.value + utility.TotalFCost.value + utility.TotalOFees.value
     # Get Incremental ELectricity Cost
     utility.IncECost.value = round(utility.TotalECost.value / utility.TotalEkWh.value, 3)
     # Get Incremental Fuel Cost

@@ -1,59 +1,59 @@
 {
     "LE": {
-        "value": "LE0601",
+        "value": "LE0619",
         "comment": "Visit number, string"
     },
     "VDATE": {
-        "value": "03/28/2025",
+        "value": "05/20/2026",
         "comment": "For two day visits, use the second date."
     },
     "LOC": {
-        "value": "Bridgewater, NJ",
+        "value": "Branchburg, NJ",
         "comment": "City, State ZIP, string"
     },
     "SIC": {
-        "value": "2013",
+        "value": "2844",
         "comment": "Look up from https://www.osha.gov/data/sic-manual"
     },
     "NAICS": {
-        "value": "311612",
+        "value": "332439",
         "comment": "Look up from https://www.census.gov/naics/"
     },
     "SALE": {
-        "value": 120000000,
+        "value": 81000000,
         "comment": "Annual sales, $, interger"
     },
     "EMPL": {
-        "value": 127,
+        "value": 68,
         "comment": "Number of employees, integer"
     },
     "AREA": {
-        "value": 132142,
+        "value": 45000,
         "comment": "Area, sqft, integer"
     },
     "PROD": {
-        "value": "Collagen Casing",
+        "value": "aerosols",
         "comment": "Principal roduct, string"
     },
     "ANPR": {
-        "value": 592021000,
+        "value": 42000000,
         "comment": "Annual production, units"
     },
     "PRUN": {
-        "value": "meters of collagen casing",
+        "value": "cans",
         "comment": "Production unit, string"
     },
     "PROH": {
         "value": [
-            12,
-            7,
+            17,
+            5,
             52
         ],
         "comment": "Production hours, list of [float, int, int]"
     },
     "OFOH": {
         "value": [
-            9,
+            17,
             5,
             52
         ],
@@ -64,29 +64,30 @@
         "comment": "Professor, string"
     },
     "LEAD": {
-        "value": "Setayesh Javadirad",
+        "value": "Alex Rios",
         "comment": "Lead Student, string"
     },
     "SAFE": {
-        "value": "Muhannad Altimemy",
+        "value": "Bingxu Zhao",
         "comment": "Safety Student, string"
     },
     "PART": {
         "value": [
-            "Benedict Amuzu",
-            "Daisy Freeman",
-            "Frank Sabbih",
-            "Ali Seyedmirzaei Sarraf",
-            "Ziqian Teng"
+            "Alex Rios",
+            "Bingxu Zhao",
+            "Agnes Walker",
+            "Binetou Sylla"
         ],
         "comment": "Visit Participants, list of strings"
     },
     "CONT": {
         "value": [
-            "Muhannad Altimemy",
+            "Amin Balazadeh",
             "Setayesh Javadirad",
             "Alex Rios",
-            "Bingxu Zhao"
+            "Bingxu Zhao",
+            "Tong Su",
+            "Gregory Scott"
         ],
         "comment": "Report Contributors, list of strings"
     }

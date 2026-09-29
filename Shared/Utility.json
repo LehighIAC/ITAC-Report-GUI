@@ -1,26 +1,26 @@
 {
     "FuelType": {
-        "value": "Propane",
+        "value": "Natural Gas",
         "comment": "Fuel Type, string"
     },
     "FuelUnit": {
-        "value": "gal",
+        "value": "Therm",
         "comment": "Fuel Unit, string"
     },
     "FC": {
-        "value": 23.35,
+        "value": 14.33,
         "comment": "Fuel Cost, $/MMBtu, float"
     },
     "NGC": {
-        "value": 0,
+        "value": 14.33,
         "comment": "Natural Gas Cost(for compatibility), $/MMBtu, float"
     },
     "EC": {
-        "value": 0.083,
+        "value": 0.169,
         "comment": "Electricity Cost, $/kWh, float"
     },
     "DC": {
-        "value": 0.67,
+        "value": 6.88,
         "comment": "Demand Cost, $/kW, float"
     },
     "LR": {
@@ -28,7 +28,7 @@
         "comment": "Labor Rate, $/hr, integer"
     },
     "TotalFuelBC": {
-        "value": 8262,
+        "value": 52104,
         "comment": "Total Fuel before conversion, integer"
     },
     "StartMo": {
@@ -40,43 +40,51 @@
         "comment": "End month, string"
     },
     "TotalEkWh": {
-        "value": 21229644,
+        "value": 2884427,
         "comment": "Total Electricity, kWh, integer"
     },
     "TotalEBtu": {
-        "value": 219502,
+        "value": 29704,
         "comment": "Total Electricity, MMBtu, integer"
     },
     "TotalDkW": {
-        "value": 36102,
+        "value": 5757,
         "comment": "Total Demand, kW, integer"
     },
+    "TotalDCost": {
+        "value": 39613,
+        "comment": "Total Demand Cost, integer"
+    },
     "TotalECost": {
-        "value": 2016126,
+        "value": 486246,
         "comment": "Total Electricity Cost, integer"
     },
+    "TotalOFees": {
+        "value": 0,
+        "comment": "Total Other Fees, integer"
+    },
     "TotalFBtu": {
-        "value": 756,
+        "value": 5210,
         "comment": "Total Fuel, MMBtu, integer"
     },
     "TotalFCost": {
-        "value": 17654,
+        "value": 74649,
         "comment": "Total Fuel Cost, integer"
     },
     "TotalBtu": {
-        "value": 220258,
+        "value": 34914,
         "comment": "Total Energy, MMBtu, integer"
     },
     "TotalCost": {
-        "value": 2033780,
+        "value": 600508,
         "comment": "Total Energy Cost, integer"
     },
     "IncECost": {
-        "value": 0.095,
+        "value": 0.169,
         "comment": "Incremental Electricity Cost, $/kWh, float"
     },
     "IncFCost": {
-        "value": 23.352,
+        "value": 14.328,
         "comment": "Incremental Fuel Cost, $/kWh, float"
     }
 }

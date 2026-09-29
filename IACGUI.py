@@ -300,7 +300,7 @@ class Application(tk.Frame):
         self.Button7 = tk.Button(self.Labelframe2, text="Open in Word", command=self.OpenReport)
         self.Button7.grid(row=19, column=0)
 
-        self.Label8 = tk.Label(self.Labelframe2, text="Copyright © 2024\nLehigh University Industrial Assessment Center", justify='left')
+        self.Label8 = tk.Label(self.Labelframe2, text="Copyright © 2024\nLehigh University Industrial Training and Assessment Center", justify='left')
         self.Label8.grid(row=21, column=0, sticky='w')
 
         for rows in range(self.Labelframe2.grid_size()[1]):

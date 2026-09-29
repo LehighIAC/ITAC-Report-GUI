@@ -14,6 +14,8 @@ def Compiler(EnergyChartsPath:str, RecommendationPath:str, ReportPath:str):
     from Shared.IAC import title_case, dollar, payback, validate_arc, add_image, grouping_num
     import tkinter as tk
 
+  
+
     # Check if EnergyChartsPath is empty
     if EnergyChartsPath == "":
         tk.messagebox.showerror("Error", "Energy Charts path is not selected.")
@@ -37,7 +39,6 @@ def Compiler(EnergyChartsPath:str, RecommendationPath:str, ReportPath:str):
             if msb == False:
                 sys.stderr.write("Please edit Description.docx and compile again.\n")
                 return
-
     # If the HTML is saved on macOS
     if os.path.exists(os.path.join(EnergyChartsPath, 'EnergyCharts.fld')):
         chartPath = os.path.join(EnergyChartsPath, 'EnergyCharts.fld')
@@ -67,7 +68,7 @@ def Compiler(EnergyChartsPath:str, RecommendationPath:str, ReportPath:str):
 
     # Set locale to en_US
     locale.setlocale(locale.LC_ALL, 'en_US')
-
+   
     print("Reading recommendations...")
     # Get all .docx files in Recommendations/ directory and extract information
     recList = [f for f in os.listdir(RecommendationPath) if f.endswith('.docx')]
@@ -235,14 +236,23 @@ def Compiler(EnergyChartsPath:str, RecommendationPath:str, ReportPath:str):
     ## Reformatting Recommendations
     for index, row in recData.iterrows():
         doc = Document(os.path.join(RecommendationPath, row['File Name']))
+        heading = doc.paragraphs[0];
         # Change title and make it upper case
-        doc.paragraphs[0].text = "Recommendation "+ str(index+1) + ': ' + title_case(row['Description'])
+        heading.text = "AR-"+ str(index+1)
         # Enforce Heading 1 style
         try:
-            doc.paragraphs[0].style = doc.styles['Heading 1']
+            heading.style = doc.styles['Heading 1']
         except:
             doc.styles.add_style('Heading 1', WD_STYLE_TYPE.PARAGRAPH)
-            doc.paragraphs[0].style = doc.styles['Heading 1']
+            heading.style = doc.styles['Heading 1']
+        # Start new line and put recommendation title
+        description = doc.paragraphs[1].insert_paragraph_before()
+        try:
+            description.style = doc.styles['Normal']
+            description.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            description.add_run(title_case(row['Description'])).bold = True
+        except:
+            pass
         # Enforce Subtitle style
         # This style is already defined in Introduction.docx
         for paragraph in doc.paragraphs:
@@ -368,7 +378,7 @@ def Compiler(EnergyChartsPath:str, RecommendationPath:str, ReportPath:str):
     # set the natural gas and demand to 2 digits accuracy
     iac = dollar(['DC', 'FC'],iac,2)
     # set the rest to integer
-    varList = ['ACS', 'IC', 'TotalECost', 'TotalFCost', 'TotalCost']
+    varList = ['ACS', 'IC', 'TotalECost', 'TotalDCost', 'TotalOFees', 'TotalFCost', 'TotalCost']
     if hasAdditional:
         varList.extend(['AddACS', 'AddIC'])
     iac = dollar(varList,iac,0)
@@ -502,10 +512,10 @@ def Compiler(EnergyChartsPath:str, RecommendationPath:str, ReportPath:str):
     # If on Windows
     elif chartPath == os.path.join(EnergyChartsPath, 'EnergyCharts_files'):
         add_image(docEnergy, '#EUChart', os.path.join(chartPath, "image001.png"), shared.Inches(6))
-        add_image(docEnergy, '#ECChart', os.path.join(chartPath, "image002.png"), shared.Inches(6))
-        add_image(docEnergy, '#DUChart', os.path.join(chartPath, "image003.png"), shared.Inches(6))
-        add_image(docEnergy, '#DCChart', os.path.join(chartPath, "image005.png"), shared.Inches(6))
-        add_image(docEnergy, '#FUChart', os.path.join(chartPath, "image006.png"), shared.Inches(6))
+        add_image(docEnergy, '#ECChart', os.path.join(chartPath, "image005.png"), shared.Inches(6))
+        add_image(docEnergy, '#DUChart', os.path.join(chartPath, "image002.png"), shared.Inches(6))
+        add_image(docEnergy, '#DCChart', os.path.join(chartPath, "image006.png"), shared.Inches(6))
+        add_image(docEnergy, '#FUChart', os.path.join(chartPath, "image003.png"), shared.Inches(6))
         add_image(docEnergy, '#FCChart', os.path.join(chartPath, "image007.png"), shared.Inches(6))
         add_image(docEnergy, '#PieUChart', os.path.join(chartPath, "image009.png"), shared.Inches(6))
         add_image(docEnergy, '#PieCChart', os.path.join(chartPath, "image011.png"), shared.Inches(6))
@@ -555,7 +565,7 @@ def Compiler(EnergyChartsPath:str, RecommendationPath:str, ReportPath:str):
     print("Replacing keys in energycharts...", end ="")
     docx_replace(docEnergy, **iac)
     print("done")
-    # Save energyc harts docx
+    # Save energy charts docx
     filenameEnergy = iac.LE + '-energy.docx'
     docEnergy.save(filenameEnergy)
 
